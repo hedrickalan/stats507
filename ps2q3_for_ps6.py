@@ -12,26 +12,63 @@ from tabulate import tabulate
 print("Starting question 3")
 print("starting a")
 #creating dataframes for each dataset
+#now includes gender
 data2011_2012 = pd.read_sas('https://wwwn.cdc.gov/nchs/nhanes/2011-2012/DEMO_G.XPT')
 data2013_2014 = pd.read_sas('https://wwwn.cdc.gov/nchs/nhanes/2013-2014/DEMO_H.XPT')
 data2015_2016 = pd.read_sas('https://wwwn.cdc.gov/nchs/nhanes/2015-2016/DEMO_I.XPT')
 data2017_2018 = pd.read_sas('https://wwwn.cdc.gov/nchs/nhanes/2017-2018/DEMO_J.XPT')
-df1 = pd.DataFrame({"sequence_num": data2011_2012["SEQN"].astype(int),                    "age": data2011_2012["RIDAGEYR"].astype(int),                    "race and eth": data2011_2012["RIDRETH3"].astype("category"),                     "edu": data2011_2012["DMDEDUC2"].astype("category"),                    "marital st": data2011_2012["DMDMARTL"].astype("category"),                    "interview": data2011_2012["RIDSTATR"].astype("category"),                    "psu var": data2011_2012["SDMVPSU"].astype(int),                    "str var": data2011_2012["SDMVSTRA"].astype(int),                    "mec exm weight": data2011_2012["WTMEC2YR"], "interv weight": data2011_2012["WTINT2YR"]})
+df1 = pd.DataFrame({"sequence_num": data2011_2012["SEQN"].astype(int),\
+                    "age": data2011_2012["RIDAGEYR"].astype(int), \
+                   "race_and_eth": data2011_2012["RIDRETH3"].astype("category"), \
+                    "edu": data2011_2012["DMDEDUC2"].astype("category"), \
+                   "marital_st": data2011_2012["DMDMARTL"].astype("category"),\
+                    "interview": data2011_2012["RIDSTATR"].astype("category"), \
+                   "psu_var": data2011_2012["SDMVPSU"].astype(int),\
+                    "str_var": data2011_2012["SDMVSTRA"].astype(int), \
+                   "mec_exm_weight": data2011_2012["WTMEC2YR"], "interv_weight": data2011_2012["WTINT2YR"], \
+                   "gender" : data2011_2012["RIAGENDR"]})
 df1["year"] = "2011-2012"
 
-df2 = pd.DataFrame({"sequence_num": data2013_2014["SEQN"].astype(int),                    "age": data2013_2014["RIDAGEYR"].astype(int),                    "race and eth": data2013_2014["RIDRETH3"].astype("category"),                    "edu": data2013_2014["DMDEDUC2"].astype("category"),                    "marital st": data2013_2014["DMDMARTL"].astype("category"),                    "interview": data2013_2014["RIDSTATR"].astype("category"),                    "psu var": data2013_2014["SDMVPSU"].astype(int),                    "str var": data2013_2014["SDMVSTRA"].astype(int),                    "mec exm weight": data2013_2014["WTMEC2YR"], "interv weight": data2013_2014["WTINT2YR"]})
+df2 = pd.DataFrame({"sequence_num": data2013_2014["SEQN"].astype(int),\
+                    "age": data2013_2014["RIDAGEYR"].astype(int), \
+                   "race_and_eth": data2013_2014["RIDRETH3"].astype("category"),\
+                    "edu": data2013_2014["DMDEDUC2"].astype("category"), \
+                   "marital_st": data2013_2014["DMDMARTL"].astype("category"),\
+                    "interview": data2013_2014["RIDSTATR"].astype("category"), \
+                   "psu_var": data2013_2014["SDMVPSU"].astype(int),\
+                    "str_var": data2013_2014["SDMVSTRA"].astype(int), \
+                   "mec_exm_weight": data2013_2014["WTMEC2YR"], "interv_weight": data2013_2014["WTINT2YR"], \
+                   "gender" : data2013_2014["RIAGENDR"]})
 df2["year"] = "2013-2014"
 
-df3 = pd.DataFrame({"sequence_num": data2015_2016["SEQN"].astype(int),                    "age": data2015_2016["RIDAGEYR"].astype(int),                    "race and eth": data2015_2016["RIDRETH3"].astype("category"),                     "edu": data2015_2016["DMDEDUC2"].astype("category"),                    "marital st": data2015_2016["DMDMARTL"].astype("category"),                    "interview": data2015_2016["RIDSTATR"].astype("category"),                    "psu var": data2015_2016["SDMVPSU"].astype(int),                    "str var": data2015_2016["SDMVSTRA"].astype(int),                    "mec exm weight": data2015_2016["WTMEC2YR"], "interv weight": data2015_2016["WTINT2YR"]})
+df3 = pd.DataFrame({"sequence_num": data2015_2016["SEQN"].astype(int),\
+                    "age": data2015_2016["RIDAGEYR"].astype(int), \
+                   "race_and_eth": data2015_2016["RIDRETH3"].astype("category"), \
+                    "edu": data2015_2016["DMDEDUC2"].astype("category"), \
+                   "marital_st": data2015_2016["DMDMARTL"].astype("category"),\
+                    "interview": data2015_2016["RIDSTATR"].astype("category"), \
+                   "psu_var": data2015_2016["SDMVPSU"].astype(int),\
+                    "str_var": data2015_2016["SDMVSTRA"].astype(int), \
+                   "mec_exm_weight": data2015_2016["WTMEC2YR"], "interv_weight": data2015_2016["WTINT2YR"], \
+                   "gender" : data2015_2016["RIAGENDR"]})
 df3["year"] = "2015-2016"
 
-df4 = pd.DataFrame({"sequence_num": data2017_2018["SEQN"].astype(int),                    "age": data2017_2018["RIDAGEYR"].astype(int),                    "race and eth": data2017_2018["RIDRETH3"].astype("category"),                    "edu": data2017_2018["DMDEDUC2"].astype("category"),                    "marital st": data2017_2018["DMDMARTL"].astype("category"),                    "interview": data2017_2018["RIDSTATR"].astype("category"),                    "psu var": data2017_2018["SDMVPSU"].astype(int),                    "str var": data2017_2018["SDMVSTRA"].astype(int),                    "mec exm weight": data2017_2018["WTMEC2YR"], "interv weight": data2017_2018["WTINT2YR"]})
+df4 = pd.DataFrame({"sequence_num": data2017_2018["SEQN"].astype(int),\
+                    "age": data2017_2018["RIDAGEYR"].astype(int), \
+                   "race_and_eth": data2017_2018["RIDRETH3"].astype("category"),\
+                    "edu": data2017_2018["DMDEDUC2"].astype("category"), \
+                   "marital_st": data2017_2018["DMDMARTL"].astype("category"),\
+                    "interview": data2017_2018["RIDSTATR"].astype("category"), \
+                   "psu_var": data2017_2018["SDMVPSU"].astype(int),\
+                    "str_var": data2017_2018["SDMVSTRA"].astype(int), \
+                   "mec_exm_weight": data2017_2018["WTMEC2YR"], "interv_weight": data2017_2018["WTINT2YR"], \
+                   "gender" : data2017_2018["RIAGENDR"]})
 df4["year"] = "2017-2018"
 
-#combining dataset
 frames = [df1, df2, df3, df4]
 result = pd.concat(frames)
-print(result)
+result.head()
+
 result.to_pickle("df.pkl")
 #find the path and save with the file extension, not self
 
