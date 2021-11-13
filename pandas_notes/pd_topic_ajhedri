@@ -1,0 +1,123 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+import numpy as np
+import pandas as pd
+from scipy.stats import t
+import matplotlib.pyplot as plt
+import matplotlib.pylab as pylab
+import matplotlib.cm as cm
+import statsmodels.api as sm
+import scipy.stats as st
+from scipy.stats import norm
+from os.path import exists
+from tabulate import tabulate
+
+
+# <h2> Problem 0 <h2>
+#     
+# <h2> Pandas sort_values() tutorial <h2>
+
+# ## General overview
+# 
+# <ul>
+#     <li>Sometimes, you may need to sort your data by column </li>
+#     <li>This can be done through using the sort_values() function through pandas </li>
+#     <li>Below is a code cell creating a data frame of rows corresponding to an individuals
+#         name, age, ID number, and location</li>
+#     <li>The data frame will show it's initial state, and the be sorted by name</li>
+
+# In[3]:
+
+
+dataframe = pd.DataFrame({"Name": ["Alan", "Smore's", "Sparrow", "Tonks", "Marina"],                          "Age": [22, 2, 1, 5, 21],                          "ID Num": [69646200, 20000000, 86753090, 48456002, 16754598],                          "Location": ["Michigan", "Michigan", "Michigan", "Texas", "Michigan"]})
+
+
+print("Original dataframe")
+print(dataframe)
+print("")
+
+print("Dataframe sorted by Name")
+#sort the dataframe in alphabetical order by name
+dataframe.sort_values(by='Name', inplace=True)
+print(dataframe)
+
+
+# ## Function breakdown
+# 
+# <ul>
+#     <li>In order to call the function, you only need to fill the "by" parameter </li>
+#     <li>This parameter is set to the name of the column you wish to sort by</li>
+#     <li>You may be wondering what the "inplace" parameter is doing</li>
+#     <ul>
+#         <li>sort_values() by default returns the sorted dataframe; however, it does not update the dataframe 
+#             unless "inplace" is specified to be True</li>
+#         </ul>
+#     <li>Below is an example showing this fact, notice that without "inplace" the sorted dataframe 
+#     must be set equal to another</li>
+
+# In[4]:
+
+
+print(dataframe)
+print("")
+dataframe.sort_values(by="Age")
+print(dataframe)
+#notice how the age column has not been sorted at all
+print("")
+new_df = dataframe.sort_values(by="Age")
+print(new_df)
+#it's been sorted!
+#let's check the original again
+print("")
+print(dataframe)
+print("")
+dataframe.sort_values(by="Age", inplace=True)
+print(dataframe)
+#both are valid ways to use the function!
+
+
+# ## Sorting in descending order
+# 
+# <ul>
+#     <li>By default, sort_values() will sort columns in ascending order, but this can be easily changed</li>
+#     <li>To do this, set the parameter, "ascending," to False</li>
+#     </ul>
+
+# In[5]:
+
+
+print(dataframe)
+print("")
+dataframe.sort_values(by="Age", inplace = True, ascending = False)
+print(dataframe)
+#now it's sorted by age in descending order!
+
+
+# ## You can also use the function to sort by multiple columns
+# 
+# <ul>
+#     <li>To do this, merely specify more columns such as in the example below</li>
+#     <li>This can be useful when generating plots and tables to view specific data</li>
+# 
+
+# In[6]:
+
+
+print(dataframe)
+print("")
+
+
+dataframe.sort_values(by=["ID Num", "Location"], inplace = True)
+print(dataframe)
+
+
+# In[ ]:
+
+
+
+
+
